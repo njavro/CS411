@@ -2,6 +2,6 @@
 
 Contributors:
 
-Kaelyn Shinbashi
-Anton Njavro
-Zhitong Su
+Kaelyn Shinbashi  
+Anton Njavro  
+Zhitong Su  
