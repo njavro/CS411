@@ -1,1 +1,25 @@
-This nice text file is a storage of all the great ideas we will have!
+Idea 1: Recommend Groupon deals based off of events in a users calendar. 
+
+The program should take the events on a user's calendar and develop a list
+of key words. The key words will then be used to cross check Groupon deals.
+Then a finalized list will be developed for the user of relevant Groupon
+deals as well as a list of recommended deals that the user may be interested in. 
+
+Possible APIs for the Project:
+https://www.programmableweb.com/api/groupon
+https://www.programmableweb.com/api/google-calendar
+https://www.programmableweb.com/api/backpack
+
+
+
+Idea 2: Curated Portfolio Tracker
+
+User inputs the list of stocks of interest and app provides detailed
+information and news related to stocks. The APIs will be used to gather
+information (financial data and relevant news articles) about said stocks
+the user inputs.  The data and articles will then be displayed to the user. 
+
+Possible APIs:
+Google News
+Yahoo Finance
+
