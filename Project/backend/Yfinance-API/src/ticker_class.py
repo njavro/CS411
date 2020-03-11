@@ -10,6 +10,3 @@ class Ticker(object):
 		self._low =  yfinance_object.iloc(0)[0][2] #Low
 		self._close = yfinance_object.iloc(0)[0][3] #Close
 		self._volume = yfinance_object.iloc(0)[0][5] #Volume
-
-
-	def (self):
