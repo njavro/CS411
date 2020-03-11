@@ -1,0 +1,6 @@
+Welcome!
+This is virtual environment so to activate it:	$source /path/to/here/bin/activate
+Once you activate venv you can go to /src directory to run files.
+gnews-class.py should have some minor test code you can use to check validity.
+Will have to build upon these 2 classes, but for now they're enought to start doing some frontend design with this data pulled in.
+
