@@ -9,9 +9,37 @@
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
 </form>
 
-{% for item in ticker %}
-	{{item}} | <a href="{% url 'delete' item.id %}">Delete Ticker</a> <br/>
-{% endfor %}
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Previous close</th>
+      <th scope="col">Market Cap</th>
+      <th scope="col">YTD Change</th>
+      <th scope="col">52 Week High</th>
+      <th scope="col">52 Week Low</th>
+      <th scope="col">Remove Ticker</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% if ticker %}
+  	{% for item in ticker %}
+  		<tr>
+	  	  <th scope="row">{{item}}</th>
+	      <td>Otto</td>
+	      <td>@mdo</td>
+	      <td>@mdo</td>
+	      <td>@mdo</td>
+	      <td>@mdo</td>
+	      <td>@mdo</td>
+	      <td> <a href="{% url 'delete' item.id %}">Delete Ticker</a></td>
+  		</tr>
+	{% endfor %}
+  </tbody>
+</table>
+{% endif %}
 
 
 
