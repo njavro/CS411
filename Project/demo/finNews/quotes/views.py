@@ -6,10 +6,7 @@ from django.contrib import messages
 # Create your views here.
 def home(request):
 
-	if request.method == 'POST':
-		return redirect('main')
-	else:
-		return render(request,'index.html',{})
+	return render(request,'index.html',{})
 
 
 def main(request):
