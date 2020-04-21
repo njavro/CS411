@@ -7,12 +7,12 @@ from django.contrib import messages
 def home(request):
 
 	if request.method == 'POST':
-		return redirect('about')
+		return redirect('main')
 	else:
 		return render(request,'index.html',{})
 
 
-def about(request):
+def main(request):
 	import requests
 	import json
 
@@ -23,10 +23,10 @@ def about(request):
 			api = json.loads(api_request.content)
 		except Exception as e:
 			api = "Error..."
-		return render(request,'about.html',{'api': api})
+		return render(request,'main.html',{'api': api})
 
 	else:
-		return render(request,'about.html',{'ticker': "Enter a ticket symbol above..."})
+		return render(request,'main.html',{'ticker': "Enter a ticket symbol above..."})
 	#API KEY: pk_67513180ad73424ca6137332a00e6ef8
 
 
@@ -61,7 +61,7 @@ def delete(request, stock_id):
 	item = Stock.objects.get(pk=stock_id)
 	item.delete()
 	messages.success(request,("Stock has been deleted!"))
-	return redirect(delete_stock)
+	return redirect('delete_stock')
 
 
 def delete_stock(request):

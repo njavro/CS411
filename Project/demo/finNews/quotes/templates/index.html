@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 
 <!DOCTYPE html>
 <html>
@@ -57,6 +58,7 @@
 
         <div class="col-lg-6">
           <h1>Check out the latest financial news.</h1>
+          <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
           <form action="{% url 'home' %}" method="POST">
             {% csrf_token %}
             <button type="button" class="btn btn-dark btn-lg download-button">Sign Up</button>
