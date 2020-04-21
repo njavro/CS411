@@ -5,8 +5,11 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-	
-	return render(request,'index.html',{})
+
+	if request.method == 'POST':
+		return redirect('about')
+	else:
+		return render(request,'index.html',{})
 
 
 def about(request):
@@ -21,7 +24,7 @@ def about(request):
 		except Exception as e:
 			api = "Error..."
 		return render(request,'about.html',{'api': api})
-		
+
 	else:
 		return render(request,'about.html',{'ticker': "Enter a ticket symbol above..."})
 	#API KEY: pk_67513180ad73424ca6137332a00e6ef8
@@ -65,4 +68,3 @@ def delete_stock(request):
 	ticker = Stock.objects.all()
 	return render(request, 'delete_stock.html', {'ticker': ticker})
 	pass
-
