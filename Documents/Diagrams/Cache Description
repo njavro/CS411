@@ -1,0 +1,7 @@
+Due to the constantly changing nature of stocks it is necessary for the cache 
+that holds information about different stocks to be refreshed often. Therefore, 
+stored information should include a timestamp of when it was last updated to 
+keep track of what information is current and what is not.  It is estimated 
+that stock information should be updated if it has not been checked in the last 
+15 - 30 minutes.  Company information is not as dynamic, but should be refreshed 
+every couple hours.  
