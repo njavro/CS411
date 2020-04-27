@@ -12,22 +12,28 @@ def home(request):
 def main(request):
 	import requests
 	import json
+	from newsapi import NewsApiClient
 
 	if request.method == 'POST':
 		ticker = request.POST['ticker']
 		api_request = requests.get("https://cloud.iexapis.com/stable/stock/{}/quote?token=pk_67513180ad73424ca6137332a00e6ef8".format(ticker))
+		news_api = NewsApiClient(api_key ='0001bb0b99014f8ba9a07902822c819e')
+		top_headlines = news_api.get_top_headlines(q=ticker,category='business',language='en',country='us')
 		try:
 			api = json.loads(api_request.content)
-			list_of_stocks = Stock.objects.all() #list Of stocks
+			top_headlines = news_api.get_top_headlines(q=api['companyName'],category='business',language='en',country='us')
 		except Exception as e:
 			api = "Error..."
-		return render(request,'main.html',{'api': api, 'list_of_stocks': list_of_stocks})
+		articles = top_headlines['articles']
+		news_list = []
+		max_len = max(5,len(articles))
 
-
-		#Google news API
-
-
-
+		for i in range(len(articles)):
+			article = articles[i]
+			news_list.append((article['title'],article['source']['name'],article['description'],article['urlToImage']))
+		#news_aggregate = zip(news,desc,img)
+		
+		return render(request,'main.html',{'api': api, 'news_list': news_list})
 
 	else:
 		return render(request,'main.html',{'ticker': "Enter a ticket symbol above..."})
