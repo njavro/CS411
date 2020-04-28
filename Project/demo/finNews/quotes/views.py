@@ -17,7 +17,7 @@ def main(request):
 	if request.method == 'POST':
 		ticker = request.POST['ticker']
 		api_request = requests.get("https://cloud.iexapis.com/stable/stock/{}/quote?token=pk_67513180ad73424ca6137332a00e6ef8".format(ticker))
-		news_request = request.POST.get("https://stocknewsapi.com/api/v1?tickers={}&items=50&token=coiahkqjpaxnd5eafuv9oiqllalf6b3rv9cwyjwq".format(ticker))
+		news_request = requests.get("https://stocknewsapi.com/api/v1?tickers={}&items=50&token=coiahkqjpaxnd5eafuv9oiqllalf6b3rv9cwyjwq".format(ticker))
 		print(news_request)
 		try:
 			api = json.loads(api_request.content)
