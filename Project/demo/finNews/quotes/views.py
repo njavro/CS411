@@ -3,9 +3,9 @@ from .models import Stock
 from .forms import StockForm
 from django.contrib import messages
 
-# Create your views here.
-def home(request):
 
+
+def home(request):
 	return render(request,'index.html',{})
 
 
@@ -27,25 +27,34 @@ def contact(request):
 def main(request):
 	import requests
 	import json
+	from newsapi import NewsApiClient
 
 	if request.method == 'POST':
 		ticker = request.POST['ticker']
 		api_request = requests.get("https://cloud.iexapis.com/stable/stock/{}/quote?token=pk_67513180ad73424ca6137332a00e6ef8".format(ticker))
+		news_request = requests.get("https://stocknewsapi.com/api/v1?tickers={}&items=50&token=coiahkqjpaxnd5eafuv9oiqllalf6b3rv9cwyjwq".format(ticker))
+		print(news_request)
 		try:
 			api = json.loads(api_request.content)
+			#news_api = json.loads(news_request.content)
 		except Exception as e:
-			api = "Error..."
-		return render(request,'main.html',{'api': api})
+			api = "Ticker Data Error..."
+		try:
+			print("HERE1")
+			news_api = json.loads(news_request.content)
+			print("HERE HERE")
+		except Exception as e:
+			news_api = "News Error..."
+		return render(request,'main.html',{'api': api,"news_api":news_api})
 
 	else:
-		return render(request,'main.html',{'ticker': "Enter a ticket symbol above..."})
+		return render(request,'main.html',{'ticker': ""})
 	#API KEY: pk_67513180ad73424ca6137332a00e6ef8
 
 
 def add_stock(request):
 	import requests
 	import json
-
 	if request.method == 'POST':
 		form = StockForm(request.POST or None)
 		if form.is_valid():
@@ -64,6 +73,7 @@ def add_stock(request):
 				api = "Error..."
 
 		return render(request,'add_stock.html',{'ticker':ticker, 'output':output})
+
 
 
 

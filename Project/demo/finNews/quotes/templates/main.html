@@ -1,30 +1,69 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load socialaccount %}
-<h1>Welcome, {{ user.username }} !</h1>
+
+<p class="text-center"><h1 class="display-4">Welcome, {{ user.username }} !</h1></p>
+
+<br/>
+
+<blockquote class="blockquote">
+  <p class="mb-0">Literally every single morning I wake up, first thing I do is visit the FinNews. Their impeccable UI and hyper-tuned state of the art ML algorithm for news kept me in the busines for last couple of decades! </p>
+  <footer class="blockquote-footer">Warren Buffet <cite title="Source Title">Wall Street Journal</cite></footer>
+</blockquote>
+
+<br/>
+<p class="text-center"><h1 class="display-4">Please enter the ticker symbol above!</h1></p>
+
+
 <br/>
 <br/>
 
-{% if ticker %}
-	{{ticker}}
-{%endif%}
-
-{% if api %}
-	{% if api == "Error..." %}
-		<h1>API ERROR</h1>
-	{% else %}
-
-		<h1>{{api.companyName}}</h1><br/>
+<div class="container">
+	{% if ticker %}
+		{{ticker}}
+	{%endif%}
+  <div class="row">
+    <div class="col">
+    {% if api %}
+    	{% if api == "Error..." %}
+			<h1>API ERROR</h1>
+		{% else %}
+    	<h1>{{api.companyName}}</h1><br/>
 		Price: ${{api.latestPrice}}<br/>
 		Previous close: {{api.prevousClose}}<br/>
 		Market Cap: {{api.marketCap}}<br/>
 		YTD Change: {{api.ytdChange}}<br/>
 		52 Week High: ${{api.week52High}}<br/>
 		52 Week Low: ${{api.week52Low}}<br/>
-
-
+		{% endif %}
 	{% endif %}
-{% endif %}
+
+    </div>
+    <div class="col">
+    {% if api %}
+    	{% if news_api == "Error..." %}
+			<h1>NEWS API ERROR</h1>
+		{% else %}
+		<h1 class="display-3">Related News</h1><br/>
+    	{% for news in news_api.data %}
+    		<blockquote class="blockquote">
+			  <p class="mb-0"><a href="{{news.news_url}}"><p class="h3">{{ news.title }}</p></a></p>
+			  <footer class="blockquote-footer">{{news.date}}<cite title="Source Title">     {{news.source_name}}</cite></footer>
+			</blockquote>
+    		<br/>
+    		<div class="text-center">
+  				<img src="{{news.image_url}}" class="rounded" alt="...">
+			</div><br/>
+			<p class="lead">
+  				{{news.text}}
+			</p><br/>
+		{% endfor %}
+		{% endif %}
+	{% endif %}
+    </div>
+    <div class="w-100"></div>
+  </div>
+</div>
 
 
 {% endblock %}
