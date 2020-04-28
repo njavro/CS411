@@ -27,7 +27,7 @@
       <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg navbar-dark">
 
-        <a class="navbar-brand" href="">FinNews</a>
+        <a class="navbar-brand" href="{% url 'home' %}">FinNews</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -37,14 +37,14 @@
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="">About</a>
+              <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="">Help</a>
+              <a class="nav-link" href="{% url 'about' %}">Help</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Contact</a>
+              <a class="nav-link" href="{% url 'about' %}">Contact</a>
             </li>
           </ul>
 
@@ -60,7 +60,7 @@
           <h1>Check out the latest financial news.</h1>
           <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
           <br>
-          <button type="button" class="btn btn-dark btn-lg download-button">Sign Up</button>
+          <button type="button" class="btn btn-dark btn-lg download-button"  onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
           <!-- Link login button to login screen -->
           <button type="button" class="btn btn-outline-light btn-lg download-button"  onclick="document.getElementById('id01').style.display='block'">Log In</button>
 

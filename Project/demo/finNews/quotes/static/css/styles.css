@@ -14,6 +14,25 @@ h1 {
   padding: 3% 15%;
 }
 
+/* About Page */
+
+.what-is-finnews-blurb{
+  font-family: "Montserrat";
+  font-size: 1.5rem;
+  color: white;
+  padding: 1.5rem;
+}
+
+p{
+  font-family: "Montserrat";
+  font-size: .75rem;
+  color: white;
+}
+
+.profile{
+  padding: 3%;
+}
+
 /* Navigation Bar */
 
 .navbar {

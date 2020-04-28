@@ -9,6 +9,21 @@ def home(request):
 	return render(request,'index.html',{})
 
 
+def about(request):
+
+	return render(request,'about.html',{})
+
+
+def help(request):
+
+	return render(request,'about.html',{})
+
+
+def contact(request):
+
+	return render(request,'about.html',{})
+
+
 def main(request):
 	import requests
 	import json
