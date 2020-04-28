@@ -35,7 +35,7 @@
     	{% for news in news_api.data %}
     		<blockquote class="blockquote">
 			  <p class="mb-0"><a href="{{news.news_url}}"><p class="h3">{{ news.title }}</p></a></p>
-			  <footer class="blockquote-footer">{{news.date}}<cite title="Source Title">{{news.source_name}}</cite></footer>
+			  <footer class="blockquote-footer">{{news.date}}<cite title="Source Title">     {{news.source_name}}</cite></footer>
 			</blockquote>
     		<br/>
     		<div class="text-center">
