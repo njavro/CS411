@@ -33,7 +33,7 @@ def main(request):
 		return render(request,'main.html',{'api': api,"news_api":news_api})
 
 	else:
-		return render(request,'main.html',{'ticker': "Enter a ticket symbol above..."})
+		return render(request,'main.html',{'ticker': ""})
 	#API KEY: pk_67513180ad73424ca6137332a00e6ef8
 
 
@@ -58,6 +58,9 @@ def add_stock(request):
 				api = "Error..."
 
 		return render(request,'add_stock.html',{'ticker':ticker, 'output':output})
+
+
+
 
 
 
