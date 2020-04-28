@@ -3,9 +3,9 @@ from .models import Stock
 from .forms import StockForm
 from django.contrib import messages
 
-# Create your views here.
-def home(request):
 
+
+def home(request):
 	return render(request,'index.html',{})
 
 
@@ -17,23 +17,21 @@ def main(request):
 	if request.method == 'POST':
 		ticker = request.POST['ticker']
 		api_request = requests.get("https://cloud.iexapis.com/stable/stock/{}/quote?token=pk_67513180ad73424ca6137332a00e6ef8".format(ticker))
-		news_api = NewsApiClient(api_key ='0001bb0b99014f8ba9a07902822c819e')
-		top_headlines = news_api.get_top_headlines(q=ticker,category='business',language='en',country='us')
+		news_request = request.POST.get("https://stocknewsapi.com/api/v1?tickers={}&items=50&token=coiahkqjpaxnd5eafuv9oiqllalf6b3rv9cwyjwq".format(ticker))
+		print(news_request)
 		try:
 			api = json.loads(api_request.content)
-			top_headlines = news_api.get_top_headlines(q=api['companyName'],category='business',language='en',country='us')
+			#news_api = json.loads(news_request.content)
 		except Exception as e:
-			api = "Error..."
-		articles = top_headlines['articles']
-		news_list = []
-		max_len = max(5,len(articles))
+			api = "Ticker Data Error..."
 
-		for i in range(len(articles)):
-			article = articles[i]
-			news_list.append((article['title'],article['source']['name'],article['description'],article['urlToImage']))
-		#news_aggregate = zip(news,desc,img)
-		
-		return render(request,'main.html',{'api': api, 'news_list': news_list})
+		try:
+			print("HERE1")
+			news_api = json.loads(news_request.content)
+			print("HERE HERE")
+		except Exception as e:
+			news_api = "News Error..."
+		return render(request,'main.html',{'api': api,"news_api":news_api})
 
 	else:
 		return render(request,'main.html',{'ticker': "Enter a ticket symbol above..."})
