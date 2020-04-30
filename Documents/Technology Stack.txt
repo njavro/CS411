@@ -1,0 +1,2 @@
+We choose Python Django framework to build our app, since all of us are most familiar with Python.
+We also consider MEAN stack, which is quite popular in the resent few years because it allows the developers to write code in only one language, JavaScript. In effect, we learn the two stacks at the same time. Because of our previous knowledge and environmental setup of Python, we find that Django is much easier to learn and can get you up and running very quickly. Finally, we go along with Python Django.
